@@ -3,14 +3,15 @@
 # Замените точки в тексте на восклицательные знаки
 # Сохраните результат в файл referat2.txt
 
-def work_this_file(file_name, action_file, text_whis_exclamation=0):
-    with open(file_name, action_file, encoding="utf-8") as text:
-        if action_file == "r":
-            text_all = text.read()
-            return text_all
-        if action_file == "w":
-            text.write(text_whis_exclamation)
-            print("Файл перезаписан!")
+def open_file(file_name):
+    with open(file_name, "r", encoding="utf-8") as text:
+        text_all = text.read()
+        return text_all
+
+def save_file(file_name, text_whis_exclamation=0):
+    with open(file_name, "w", encoding="utf-8") as text:
+        text.write(text_whis_exclamation)
+        print("Файл перезаписан!")
 
 def count_lenght_string(text_all):
     return len(text_all)
@@ -21,7 +22,7 @@ def point_to_exclamation(text_all):
 
 
 if __name__ == "__main__":
-    result_read = work_this_file("referat.txt", "r")
+    result_read = open_file("referat.txt")
     print(f"Длина всей строки файла: {count_lenght_string(result_read)}")
     result_for_save = point_to_exclamation(result_read)
-    work_this_file("referat.txt", "w", result_for_save)
+    save_file("referat.txt", result_for_save)
